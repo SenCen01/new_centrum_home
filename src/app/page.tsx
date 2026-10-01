@@ -1,69 +1,93 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ShieldCheck, Clock, HeartHandshake, Siren } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
+import { TrustPillars } from "@/components/trust-pillars";
+import { DifferenceGrid, type DifferenceItem } from "@/components/difference-grid";
+import { ContactCta } from "@/components/contact-cta";
+import { cn } from "@/lib/utils";
+
+const whyChooseItems: DifferenceItem[] = [
+  {
+    icon: HeartHandshake,
+    title: "Professionalism, Experience, and Passion",
+    description:
+      "Our dedicated team raises the bar for residential concierge and security services in the region.",
+  },
+  {
+    icon: Clock,
+    title: "24/7 Support",
+    description:
+      "Centrum management and personnel are always ready to respond to your needs and emergencies, day or night.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Enhanced Safety and Welcoming Environments",
+    description:
+      "Our concierges not only ensure the security of your building but also create a warm, customer-oriented atmosphere.",
+  },
+  {
+    icon: Siren,
+    title: "Crime Deterrence and Rapid Response",
+    description:
+      "Our trained security staff effectively monitor and address suspicious activities, taking appropriate action to protect residents and property.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <>
+      <section className="relative isolate flex min-h-[85vh] items-center overflow-hidden bg-brand-dark text-white">
         <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
+          src="/images/AdobeStock_69179589.jpeg"
+          alt="Security concierge on duty in a building lobby"
+          fill
           priority
+          sizes="100vw"
+          className="object-cover"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/95 via-brand-dark/80 to-brand-dark/40" />
+        <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-7 px-4 py-24 sm:px-6 lg:px-8">
+          <h1 className="max-w-3xl font-heading text-4xl font-black tracking-tight text-balance sm:text-6xl">
+            Your Trusted Partner in Residential Concierge and Security Services
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+          <p className="max-w-xl text-lg text-white/80">
+            At Centrum, we are proud to be Greater Vancouver&rsquo;s leading
+            provider of residential concierge and security services. Our
+            commitment to reliability, warmth, and personalized care sets us
+            apart.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <Link href="/contact" className={cn(buttonVariants({ size: "lg" }))}>
+              Contact Us
+            </Link>
+            <Link
+              href="/concierge-services"
+              className={cn(
+                buttonVariants({ size: "lg", variant: "secondary" }),
+                "bg-white/10 text-white hover:bg-white/20"
+              )}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+              Our Services
+            </Link>
+          </div>
+          <TrustPillars className="mt-4 text-white/90 [&_svg]:text-primary" />
+        </div>
+      </section>
+
+      <DifferenceGrid title="Why Choose Centrum?" items={whyChooseItems} />
+
+      <section className="py-20">
+        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <p className="font-heading text-balance text-2xl font-extrabold text-foreground sm:text-3xl">
+            Let us take care of the details, so you can feel secure and at
+            ease in your home. Welcome to Centrum&mdash;where service meets
+            peace of mind.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </section>
+
+      <ContactCta />
+    </>
   );
 }
